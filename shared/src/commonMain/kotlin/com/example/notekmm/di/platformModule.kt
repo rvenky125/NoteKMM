@@ -1,0 +1,5 @@
+package com.example.notekmm.di
+
+import org.koin.core.module.Module
+
+expect val platformModule: Module
