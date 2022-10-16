@@ -1,9 +1,11 @@
 package com.example.notekmm.domain
 
+import com.example.notekmm.data.models.Note
 import com.example.notekmm.data.objects.NoteObject
 import kotlinx.coroutines.flow.Flow
 
 interface NoteDataSource {
-    suspend fun insertNote(noteObject: NoteObject)
-    fun getAllNotes(): Flow<List<NoteObject>>
+    suspend fun insertNote(text: String)
+    fun getAllNotes(): Flow<List<Note>>
+    suspend fun deleteNote(id: String)
 }

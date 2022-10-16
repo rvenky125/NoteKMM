@@ -1,5 +1,6 @@
 package com.example.notekmm.interactors
 
+import com.example.notekmm.data.models.Note
 import com.example.notekmm.data.objects.NoteObject
 import com.example.notekmm.domain.NoteDataSource
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
@@ -17,7 +18,7 @@ class NoteViewModel(
 
     fun addNote(text: String) {
         viewModelScope.launch {
-            dataSource.insertNote(NoteObject().apply { this.text = text })
+            dataSource.insertNote(text = text)
         }
     }
 
@@ -25,14 +26,15 @@ class NoteViewModel(
         _textFieldValue.value = text
     }
 
+    fun onDelete(id: String) {
+        viewModelScope.launch {
+            dataSource.deleteNote(id)
+        }
+    }
+
     init {
         dataSource.getAllNotes().onEach {
-            _notes.value = it.map { noteObject -> Note(noteObject.text, noteObject.id.toString()) }
+            _notes.value = it
         }.launchIn(viewModelScope)
     }
 }
-
-data class Note(
-    val text: String = "",
-    val id: String = ""
-)

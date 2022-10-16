@@ -5,7 +5,8 @@ plugins {
     kotlin("android").version("1.7.10").apply(false)
     kotlin("multiplatform").version("1.7.10").apply(false)
 
-    id("io.realm.kotlin").version("1.2.0").apply(false)
+    //Add this for realmDB
+    id("io.realm.kotlin").version("1.3.0").apply(false)
 }
 
 tasks.register("clean", Delete::class) {
