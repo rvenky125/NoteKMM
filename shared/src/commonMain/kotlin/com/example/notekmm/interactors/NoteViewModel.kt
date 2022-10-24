@@ -1,7 +1,6 @@
 package com.example.notekmm.interactors
 
-import com.example.notekmm.data.models.Note
-import com.example.notekmm.data.objects.NoteObject
+import com.example.notekmm.domain.models.Note
 import com.example.notekmm.domain.NoteDataSource
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.*

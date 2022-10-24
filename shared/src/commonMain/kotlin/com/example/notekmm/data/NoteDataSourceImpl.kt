@@ -1,6 +1,6 @@
 package com.example.notekmm.data
 
-import com.example.notekmm.data.models.Note
+import com.example.notekmm.domain.models.Note
 import com.example.notekmm.data.objects.NoteObject
 import com.example.notekmm.domain.NoteDataSource
 import io.realm.kotlin.Realm

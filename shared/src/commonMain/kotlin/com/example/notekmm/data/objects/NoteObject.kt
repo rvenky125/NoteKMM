@@ -5,6 +5,5 @@ import io.realm.kotlin.types.RealmObject
 
 class NoteObject: RealmObject {
     var id: ObjectId = ObjectId.create()
-
     var text: String = ""
 }

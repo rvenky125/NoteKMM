@@ -1,6 +1,6 @@
 package com.example.notekmm.domain
 
-import com.example.notekmm.data.models.Note
+import com.example.notekmm.domain.models.Note
 import com.example.notekmm.data.objects.NoteObject
 import kotlinx.coroutines.flow.Flow
 

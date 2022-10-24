@@ -1,4 +1,4 @@
-package com.example.notekmm.data.models
+package com.example.notekmm.domain.models
 
 data class Note(
     val text: String = "",
