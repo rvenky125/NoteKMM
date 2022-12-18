@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
 
                 val viewModel: NoteViewModel = getViewModel()
                 val notes = viewModel.notes.collectAsState(emptyList()).value
-                val textFieldValue = viewModel.textFieldValue.collectAsState().value
+                val textFieldValue = viewModel.textFieldValue.collectAsState("").value
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -115,7 +115,7 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier.weight(1f)
                             )
                             Button(onClick = {
-                                viewModel.addNote(textFieldValue)
+                                viewModel.addNote()
                                 viewModel.onValueChange("")
                             }) {
                                 Text(text = "Add")

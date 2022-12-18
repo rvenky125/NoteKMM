@@ -1,3 +1,5 @@
+import com.android.aaptcompiler.android.isTruthy
+
 val koin_version = "3.2.2"
 val koin_android_version = "3.2.2"
 val koin_android_compose_version = "3.2.1"
@@ -27,8 +29,8 @@ kotlin {
         ios.deploymentTarget = "14.1"
         podfile = project.file("../iosApp/Podfile")
         framework {
-            baseName = "MultiPlatformLibrary"
-
+            baseName = "shared"
+            isStatic = false
             export("dev.icerock.moko:mvvm-core:$moko_mvvm_version")
             export("dev.icerock.moko:mvvm-flow:$moko_mvvm_version")
         }
@@ -37,7 +39,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
                 implementation("io.realm.kotlin:library-base:1.2.0")
 
                 api("dev.icerock.moko:mvvm-core:$moko_mvvm_version")
