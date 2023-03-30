@@ -1,5 +1,3 @@
-import com.android.aaptcompiler.android.isTruthy
-
 val koin_version = "3.2.2"
 val koin_android_version = "3.2.2"
 val koin_android_compose_version = "3.2.1"
@@ -7,6 +5,7 @@ val koin_ktor = "3.2.2"
 val moko_mvvm_version = "0.14.0"
 val decompose_version = "1.0.0-alpha-06"
 val destinations_version = "1.6.20-beta"
+val napierVersion = "2.6.1"
 
 plugins {
     kotlin("multiplatform")
@@ -39,7 +38,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
                 implementation("io.realm.kotlin:library-base:1.2.0")
 
@@ -48,6 +46,9 @@ kotlin {
 
                 api("io.insert-koin:koin-core:$koin_version")
                 api("io.insert-koin:koin-test:$koin_version")
+
+                //Logging
+                implementation("io.github.aakira:napier:$napierVersion")
             }
         }
         val commonTest by getting {

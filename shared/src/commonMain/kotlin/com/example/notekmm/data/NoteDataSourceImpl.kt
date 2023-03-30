@@ -3,6 +3,7 @@ package com.example.notekmm.data
 import com.example.notekmm.domain.models.Note
 import com.example.notekmm.data.objects.NoteObject
 import com.example.notekmm.domain.NoteDataSource
+import io.github.aakira.napier.Napier
 import io.realm.kotlin.Realm
 import io.realm.kotlin.types.ObjectId
 import kotlinx.coroutines.flow.Flow
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.map
 
 class NoteDataSourceImpl(private val realmDb: Realm) : NoteDataSource {
     override suspend fun insertNote(text: String) {
+        Napier.d(tag = "myTag", message = "Insert note: $text")
         realmDb.write {
             copyToRealm(NoteObject().apply {
                 this.text = text
@@ -19,7 +21,11 @@ class NoteDataSourceImpl(private val realmDb: Realm) : NoteDataSource {
 
     override fun getAllNotes(): Flow<List<Note>> {
         return realmDb.query(NoteObject::class).asFlow()
-            .map { change -> change.list.toList().map { Note(id = it.id.toString(), text = it.text) }.reversed() }
+            .map { change ->
+                change.list.toList().map {
+                    Note(id = it.id.toString(), text = it.text)
+                }.reversed()
+            }
     }
 
     override suspend fun deleteNote(id: String) {

@@ -1,6 +1,7 @@
 package com.example.notekmm.android
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -10,8 +11,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -78,47 +81,60 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        LazyColumn(
-                            reverseLayout = true,
-                            modifier = Modifier.weight(1f)
+                    Scaffold(topBar = {
+                        TopAppBar(backgroundColor = MaterialTheme.colors.background) {
+                            Text(
+                                text = "Note KMM",
+                                modifier = Modifier.padding(start = 16.dp),
+                                color = MaterialTheme.colors.onBackground
+                            )
+                        }
+                    }) {
+                        Column(
+                            modifier = Modifier
+                                .padding(it)
+                                .padding(horizontal = 16.dp)
                         ) {
-                            items(notes) {
-                                ListItem {
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.SpaceBetween,
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        Text(
-                                            text = it.text,
-                                            style = MaterialTheme.typography.subtitle1,
-                                            modifier = Modifier.weight(1f)
-                                        )
-                                        IconButton(onClick = { viewModel.onDelete(it.id) }) {
-                                            Icon(
-                                                imageVector = Icons.Default.Done,
-                                                contentDescription = "Done"
+                            LazyColumn(
+                                reverseLayout = true,
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                items(notes) {
+                                    ListItem {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.SpaceBetween,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Text(
+                                                text = it.text,
+                                                style = MaterialTheme.typography.subtitle1,
+                                                modifier = Modifier.weight(1f)
                                             )
+                                            IconButton(onClick = { viewModel.onDelete(it.id) }) {
+                                                Icon(
+                                                    imageVector = Icons.Default.Delete,
+                                                    contentDescription = "Delete"
+                                                )
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            TextField(
-                                value = textFieldValue,
-                                onValueChange = viewModel::onValueChange,
-                                modifier = Modifier.weight(1f)
-                            )
-                            Button(onClick = {
-                                viewModel.addNote()
-                                viewModel.onValueChange("")
-                            }) {
-                                Text(text = "Add")
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                TextField(
+                                    value = textFieldValue,
+                                    onValueChange = viewModel::onValueChange,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                Button(onClick = {
+                                    viewModel.addNote()
+                                }) {
+                                    Text(text = "Add")
+                                }
                             }
                         }
                     }

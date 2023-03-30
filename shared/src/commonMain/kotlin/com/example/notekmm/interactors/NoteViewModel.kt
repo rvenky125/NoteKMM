@@ -4,6 +4,7 @@ import com.example.notekmm.domain.models.Note
 import com.example.notekmm.domain.NoteDataSource
 import dev.icerock.moko.mvvm.flow.*
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
