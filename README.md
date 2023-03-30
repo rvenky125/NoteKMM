@@ -8,7 +8,7 @@ Here are some screenshots of the app:
 
 ### Android
 
-![Android App](screen_recordings/android.mp4)
+https://user-images.githubusercontent.com/58197145/228917197-4edd6364-28f4-4b67-8bae-13084e4d5575.mp4
 
 ### iOS
 
