@@ -2,13 +2,17 @@
 
 NoteKMM is a Kotlin multiplatform app that demonstrates the implementation of the MVVM architecture, shared DI, shared ViewModel, and shared database (MongoDB). It is a single-screen app created for demo purposes, where users can save tasks and see them updated in real-time. Users can also delete a note by clicking on the delete icon.
 
+## Screenshots
+
+Here are some screenshots of the app:
+
 ### Android
 
-![Android App](android_screenshot.png)
+![Android App](screen_recordings/android.mp4)
 
 ### iOS
 
-![iOS App](ios_screenshot.png)
+[//]: # (![iOS App]&#40;ios_screenshot.png&#41;)
 
 ## Installation
 
@@ -26,5 +30,10 @@ The app uses the following libraries:
 - Moko MVVM for shared ViewModel
 - Realm for database
 
+## Contribution
+
+Contributions are welcome! If you want to contribute to the project, feel free to submit a pull request.
+
 ## License
+
 This project is licensed under the MIT License. See the `LICENSE` file for more information.
